@@ -1,4 +1,9 @@
 Yolo on Raspberry Pi
 --------------------
-Use [yolo object detection system](https://pjreddie.com/darknet/yolo/) on Raspberry Pi.
+Use yolo object detection system on Raspberry Pi.
+
+Related links
+-------------
+
+[YOLO official website](https://pjreddie.com/darknet/yolo/)
 
