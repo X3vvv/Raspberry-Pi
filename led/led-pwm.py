@@ -1,3 +1,4 @@
+# reference: https://zhuanlan.zhihu.com/p/73634679
 import RPi.GPIO as GPIO
 from time import sleep
 
