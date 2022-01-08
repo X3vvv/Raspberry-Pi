@@ -1,3 +1,4 @@
+# reference: https://www.cnblogs.com/tobe-goodlearner/p/tutorial-pynput.html
 from pynput import keyboard
 
 def on_press(key):
