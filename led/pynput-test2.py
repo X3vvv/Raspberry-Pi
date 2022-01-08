@@ -1,3 +1,4 @@
+# reference: https://www.cnblogs.com/tobe-goodlearner/p/tutorial-pynput.html
 import pynput
 
 with pynput.keyboard.Events() as events:
