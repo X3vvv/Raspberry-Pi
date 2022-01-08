@@ -1,3 +1,4 @@
+# Multi-thread led controller with adjustable blink speed and PWM frequency.
 import time
 import RPi.GPIO as GPIO
 import threading
