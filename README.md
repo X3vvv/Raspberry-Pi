@@ -3,7 +3,7 @@
 Projects about raspberry pi
 
 # Set Up Raspberry Pi
-[Set up Raspberry Pi without a display screen](https://blog.csdn.net/weixin_39591031/article/details/122325148)
+[Tutorial: Set up Raspberry Pi without a display screen](https://blog.csdn.net/weixin_39591031/article/details/122325148)
 
 # What's in This Repo
 
