@@ -7,6 +7,8 @@ import RPi.GPIO as GPIO
 
 class Car(object):
     def __init__(self):
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
         self.enab_pin = [5, 6, 13, 19]
         self.inx_pin = [21, 22, 23, 24]
         self.RightAhead_pin = self.inx_pin[0]
@@ -17,19 +19,15 @@ class Car(object):
 
     # init gpios
     def setup(self):
-        print("begin setup ena enb pin")
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setwarnings(False)
+        # print("begin setup ena enb pin")
+        # set enable gpio as HIGH
         for pin in self.enab_pin:
             GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.HIGH)
-        # set enable gpio as HIGH
-        pin = None
+        # set controlling gpio as LOW
         for pin in self.inx_pin:
             GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.LOW)
-        # set controlling gpio as LOW
-        print("setup ena enb pin over")
 
     # forward
     def front(self):
