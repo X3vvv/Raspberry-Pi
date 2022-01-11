@@ -19,7 +19,6 @@ class Car(object):
 
     # init gpios
     def setup(self):
-        # print("begin setup ena enb pin")
         # set enable gpio as HIGH
         for pin in self.enab_pin:
             GPIO.setup(pin, GPIO.OUT)
