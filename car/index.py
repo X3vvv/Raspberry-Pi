@@ -3,18 +3,24 @@
 from bottle import get, post, run, request, template
 
 import RPi.GPIO as GPIO
+import configparser
 
 
 class Car(object):
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
-        self.enab_pin = [5, 6, 13, 19]
-        self.inx_pin = [21, 22, 23, 24]
-        self.RightAhead_pin = self.inx_pin[0]
-        self.RightBack_pin = self.inx_pin[1]
-        self.LeftAhead_pin = self.inx_pin[2]
-        self.LeftBack_pin = self.inx_pin[3]
+        config = configparser.ConfigParser()
+        config.read("config.ini")
+        self.enab_pin = [config.getint("ena"), config.getint("enb")]
+        self.inx_pin = [
+            config.getint("in1"),  # left wheel 1
+            config.getint("in2"),  # left wheel 2
+            config.getint("in3"),  # right wheel 1
+            config.getint("in4"),  # right wheel 2
+        ]
+        self.left_pin = [self.inx_pin[0], self.inx_pin[1]]
+        self.right_pin = [self.inx_pin[2], self.inx_pin[3]]
         self.setup()
 
     # init gpios
@@ -31,34 +37,34 @@ class Car(object):
     # forward
     def front(self):
         self.setup()
-        GPIO.output(self.RightAhead_pin, GPIO.HIGH)
-        GPIO.output(self.LeftAhead_pin, GPIO.HIGH)
+        GPIO.output(self.left_pin[0], GPIO.HIGH)
+        GPIO.output(self.right_pin[0], GPIO.HIGH)
 
     # left
     def leftFront(self):
         self.setup()
-        GPIO.output(self.RightAhead_pin, GPIO.HIGH)
+        GPIO.output(self.right_pin[0], GPIO.HIGH)
 
     # right
     def rightFront(self):
         self.setup()
-        GPIO.output(self.LeftAhead_pin, GPIO.HIGH)
+        GPIO.output(self.left_pin[0], GPIO.HIGH)
 
     # back
     def rear(self):
         self.setup()
-        GPIO.output(self.RightBack_pin, GPIO.HIGH)
-        GPIO.output(self.LeftBack_pin, GPIO.HIGH)
+        GPIO.output(self.left_pin[1], GPIO.HIGH)
+        GPIO.output(self.right_pin[1], GPIO.HIGH)
 
     # back + left
     def leftRear(self):
         self.setup()
-        GPIO.output(self.RightBack_pin, GPIO.HIGH)
+        GPIO.output(self.right_pin[1], GPIO.HIGH)
 
     # back + right
     def rightRear(self):
         self.setup()
-        GPIO.output(self.LeftBack_pin, GPIO.HIGH)
+        GPIO.output(self.left_pin[1], GPIO.HIGH)
 
 
 def main(status):
@@ -70,9 +76,9 @@ def main(status):
     elif status == "rear":
         car.rear()
     elif status == "left":
-        pass
+        car.leftFront()  # TODO
     elif status == "right":
-        pass
+        car.rightFront()  # TODO
     elif status == "leftFront":
         car.leftFront()
     elif status == "rightFront":
