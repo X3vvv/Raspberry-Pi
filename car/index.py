@@ -11,13 +11,16 @@ class Car(object):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         config = configparser.ConfigParser()
-        config.read("config.ini")
-        self.enab_pin = [config.getint("ena"), config.getint("enb")]
+        config.read("/home/pi/Documents/Raspberry-Pi/car/config.ini")
+        self.enab_pin = [
+            config.getint("DEFAULT", "ena"),
+            config.getint("DEFAULT", "enb"),
+        ]
         self.inx_pin = [
-            config.getint("in1"),  # left wheel 1
-            config.getint("in2"),  # left wheel 2
-            config.getint("in3"),  # right wheel 1
-            config.getint("in4"),  # right wheel 2
+            config.getint("DEFAULT", "in1"),  # left wheel 1
+            config.getint("DEFAULT", "in2"),  # left wheel 2
+            config.getint("DEFAULT", "in3"),  # right wheel 1
+            config.getint("DEFAULT", "in4"),  # right wheel 2
         ]
         self.left_pin = [self.inx_pin[0], self.inx_pin[1]]
         self.right_pin = [self.inx_pin[2], self.inx_pin[3]]
@@ -93,7 +96,7 @@ def main(status):
 
 @get("/")
 def index():
-    return template("index")
+    return template("/home/pi/Documents/Raspberry-Pi/car/index")
 
 
 @post("/cmd")
