@@ -1,6 +1,6 @@
 # Raspberry-Pi
 
-Projects about raspberry pi
+Projects about raspberry pi.
 
 # Set Up Raspberry Pi
 [Tutorial: Set up Raspberry Pi without a display screen](https://blog.csdn.net/weixin_39591031/article/details/122325148)
