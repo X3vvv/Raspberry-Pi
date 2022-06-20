@@ -10,6 +10,3 @@ Projects about raspberry pi.
 `led/`:  python codes control LED on Reapberry Pi 4B
 
 `yolo/`: using `YOLO` on Raspberry Pi 4B (darknet-nnpack version)
-
-CHange on remote server.
-Test for git pull.
