@@ -1,6 +1,6 @@
 # Raspberry-Pi
 
-Projects about raspberry pi
+Projects about raspberry pi.
 
 # Set Up Raspberry Pi
 [Tutorial: Set up Raspberry Pi without a display screen](https://blog.csdn.net/weixin_39591031/article/details/122325148)
@@ -10,5 +10,3 @@ Projects about raspberry pi
 `led/`:  python codes control LED on Reapberry Pi 4B
 
 `yolo/`: using `YOLO` on Raspberry Pi 4B (darknet-nnpack version)
-
-This is a test line.
